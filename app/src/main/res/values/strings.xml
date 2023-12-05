@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">KotlinFuel_Managment</string>
+    <string name="add_fuel_btn">Add Fuel</string>
+    <string name="enter_fuel_editText">Enter fuel (LITERS)</string>
+    <string name="average_textView">Average of your Vehicle: 0.0 Km</string>
+    <string name="totaldistance_textView">Total Driven: 0.0 Km/L</string>
+    <string name="enter_distance_editText">Enter distance (KiloMeters)</string>
+    <string name="avg_calculator_btn">Calculate Average</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="history_fragment">History Fragment</string>
+    <string name="bar_chart_fragment">Bar Chart Fragment</string>
+    <string name="pie_chart_fragment">Pie Chart Fragment</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="add_fragment">Add Fragment</string>
+</resources>

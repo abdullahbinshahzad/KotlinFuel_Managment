@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "390768870576",
+    "project_id": "kotlinfuel-managment",
+    "storage_bucket": "kotlinfuel-managment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390768870576:android:0e7feeba92b485f2f7e775",
+        "android_client_info": {
+          "package_name": "com.example.kotlinfuel_managment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh_GA19t4QbCN0rDc7kDzXBW8LIMtJ_OI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
