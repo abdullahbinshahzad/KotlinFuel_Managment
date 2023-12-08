@@ -1,4 +1,4 @@
-package com.example.kotlinfuel_managment.View
+package com.example.kotlinfuel_managment.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -23,11 +23,11 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         binding.loginBTN.setOnClickListener {
-            val loginusername = binding.loginUsernameET.text.toString()
-            val loginpassword = binding.loginPasswordET.text.toString()
+            val loginUserName = binding.loginUsernameET.text.toString()
+            val loginPassword = binding.loginPasswordET.text.toString()
 
-            if (loginusername.isNotEmpty() && loginpassword.isNotEmpty()) {
-                firebaseAuth.signInWithEmailAndPassword(loginusername, loginpassword)
+            if (loginUserName.isNotEmpty() && loginPassword.isNotEmpty()) {
+                firebaseAuth.signInWithEmailAndPassword(loginUserName, loginPassword)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
             } else{
-                Toast.makeText(this, "PLZ FILL THE EMPTY LOG-IN FIELDs", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "PLZ FILL LOG-IN COMPLETELY", Toast.LENGTH_SHORT).show()
             }
         }
         binding.signupTV.setOnClickListener {

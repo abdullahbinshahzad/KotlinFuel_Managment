@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/baseline_add_24"
+        android:contentDescription="@string/nav_header_image_view"
         android:scaleType="centerCrop"/>
 
 </LinearLayout>

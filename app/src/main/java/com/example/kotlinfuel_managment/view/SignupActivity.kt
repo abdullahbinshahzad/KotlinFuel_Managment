@@ -1,4 +1,4 @@
-package com.example.kotlinfuel_managment.View
+package com.example.kotlinfuel_managment.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -21,11 +21,11 @@ class SignupActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.signupBTN.setOnClickListener {
-            val signupusername = binding.signupUsernameET.text.toString()
-            val signuppassword = binding.signupPasswordET.text.toString()
+            val signupUserName = binding.signupUsernameET.text.toString()
+            val signupPassword = binding.signupPasswordET.text.toString()
 
-            if (signupusername.isNotEmpty() && signuppassword.isNotEmpty()) {
-                firebaseAuth.createUserWithEmailAndPassword(signupusername, signuppassword)
+            if (signupUserName.isNotEmpty() && signupPassword.isNotEmpty()) {
+                firebaseAuth.createUserWithEmailAndPassword(signupUserName, signupPassword)
                     .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -40,7 +40,7 @@ class SignupActivity : AppCompatActivity() {
                     }
                 }
             } else{
-                Toast.makeText(this, "PLZ FILL THE EMPTY SIGN-UP FIELDs", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "PLZ FILL SIGN-UP COMPLETELY", Toast.LENGTH_SHORT).show()
             }
         }
         binding.loginTV.setOnClickListener {
@@ -49,24 +49,3 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 }
-
-//    private fun signupUser(username: String, password:String){
-//        databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(object : ValueEventListener{
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                if (!dataSnapshot.exists()){
-//                    val id = databaseReference.push().key
-//                    val userData = User(id, username, password)
-//                    databaseReference.child(id!!).setValue(userData)
-//                    Toast.makeText(this@SignupActivity,"sign-up successfull", Toast.LENGTH_SHORT).show()
-//                    startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
-//                    finish()
-//                } else {
-//                    Toast.makeText(this@SignupActivity, "User already exists", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                Toast.makeText(this@SignupActivity, "Database Error ${databaseError.message}", Toast.LENGTH_SHORT).show()
-//            }
-//        })
-//    }

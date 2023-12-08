@@ -1,59 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".View.SignupActivity">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@color/material_on_primary_emphasis_high_type"
-        app:cardCornerRadius="10dp"
-        android:layout_margin="5dp"
-        app:cardElevation="10dp">
+    tools:context=".view.SignupActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="403dp"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:padding="5dp">
+            android:gravity="center"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <EditText
                 android:id="@+id/signup_username_ET"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border"
                 android:textSize="21sp"
-                android:hint="E-mail/Username"
+                android:inputType="textEmailAddress"
+                android:importantForAutofill="yes"
+                tools:ignore="Autofill"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:hint="@string/e_mail_hint"
                 android:padding="10dp"/>
 
             <EditText
                 android:id="@+id/signup_password_ET"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border"
                 android:textSize="21sp"
-                android:hint="Password"
+                android:inputType="textPassword"
+                android:hint="@string/password_hint"
+                android:importantForAutofill="yes"
+                tools:ignore="Autofill"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"/>
 
             <Button
                 android:id="@+id/signup_BTN"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/border"
                 android:textSize="20sp"
+                android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Sign-Up"/>
+                android:text="@string/sign_up_btn"/>
 
             <TextView
                 android:id="@+id/login_TV"
@@ -63,9 +67,6 @@
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/green"
-                android:text="Already Registered? Log-In"/>
-
+                android:text="@string/already_registered_log_in"/>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

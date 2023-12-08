@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">KotlinFuel_Managment</string>
     <string name="add_fuel_btn">Add Fuel</string>
-    <string name="enter_fuel_editText">Enter fuel (LITERS)</string>
+    <string name="enter_fuel_editText">Liters of Fuel You Put-In</string>
+    <string name="trip_average_textView">Average of your Last Trip: 0.0 Km</string>
     <string name="average_textView">Average of your Vehicle: 0.0 Km</string>
-    <string name="totaldistance_textView">Total Driven: 0.0 Km/L</string>
-    <string name="enter_distance_editText">Enter distance (KiloMeters)</string>
+    <string name="trip_average_textView_edited">Average of your Last Trip: %s Km/L</string>
+    <string name="average_textView_edited">Average of your Vehicle: %s Km/L</string>
+    <string name="trip_counter_editText">Trip Kilometers Driven</string>
     <string name="avg_calculator_btn">Calculate Average</string>
     <string name="home_fragment">Home Fragment</string>
     <string name="history_fragment">History Fragment</string>
@@ -14,4 +16,22 @@
     <string name="nav_close">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="add_fragment">Add Fragment</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="bar_chart">Bar Chart</string>
+    <string name="pie_chart">Pie Chart</string>
+    <string name="e_mail_hint">E-mail/Username</string>
+    <string name="password_hint">Password</string>
+    <string name="log_in_btn">Log-In</string>
+    <string name="not_yet_registered_sign_up">Not yet registered? Sign-up</string>
+    <string name="sign_up_btn">Sign-Up</string>
+    <string name="already_registered_log_in">Already Registered? Log-In</string>
+    <string name="nav_header_image_view">nav_header</string>
+    <string name="top_blinker_home_fragment">always top up your fuel tank before filling the information</string>
+    <string name="cost_per_liter_of_fuel">Cost per Liter of Fuel</string>
+    <string name="cost_of_fuel">Cost of Fuel</string>
+    <string name="trip_fuel">Trip Fuel</string>
+    <string name="trip_drive">Trip Drive</string>
+    <string name="trip_average">Trip Average</string>
+    <string name="vehicle_average">Vehicle Average</string>
 </resources>

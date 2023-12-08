@@ -4,36 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.fragments.HomeFragment">
+    tools:context=".view.fragments.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:background="#5043A047">
 
-        <EditText
-            android:id="@+id/fuelInputEditText"
+        <TextView
+            android:id="@+id/sample"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="clip_vertical"
+            android:textAllCaps="true"
+            android:text="@string/top_blinker_home_fragment"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/fuelYouPutInEditText"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:background="@drawable/border"
             android:hint="@string/enter_fuel_editText"
             android:inputType="number"
+            android:layout_gravity="center"
             android:padding="8dp"
-            android:textSize="24sp" />
+            android:textColor="@color/black"
+            android:textColorHint="#616161"
+            android:textSize="24sp"
+            android:importantForAutofill="yes"
+            tools:ignore="Autofill"/>
 
         <EditText
-            android:id="@+id/distanceInputEditText"
-            android:layout_width="match_parent"
+            android:id="@+id/tripCounterReadingEditText"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="3dp"
             android:background="@drawable/border"
-            android:hint="@string/enter_distance_editText"
+            android:hint="@string/trip_counter_editText"
+            android:importantForAutofill="yes"
             android:inputType="number"
             android:padding="8dp"
-            android:textSize="24sp" />
+            android:textColor="@color/black"
+            android:textColorHint="#616161"
+            android:textSize="24sp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/costOfFuelEditText"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/border"
+            android:hint="@string/cost_per_liter_of_fuel"
+            android:importantForAutofill="yes"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="#616161"
+            android:textSize="24sp"
+            tools:ignore="Autofill" />
 
         <Button
             android:id="@+id/calculateAverageButton"
@@ -42,6 +79,16 @@
             android:layout_gravity="center"
             android:layout_marginTop="3dp"
             android:text="@string/avg_calculator_btn"
+            android:background="@drawable/border"
+            android:textColor="@color/black"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/tripAverageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trip_average_textView"
+            android:layout_gravity="center"
             android:textSize="20sp" />
 
         <TextView
@@ -49,13 +96,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/average_textView"
+            android:layout_gravity="center"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/totaldistanceTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/totaldistance_textView"
-            android:textSize="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

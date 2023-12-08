@@ -1,4 +1,4 @@
-package com.example.kotlinfuel_managment.Model
+package com.example.kotlinfuel_managment.model
 
 data class User(
     val id: String? = null,
