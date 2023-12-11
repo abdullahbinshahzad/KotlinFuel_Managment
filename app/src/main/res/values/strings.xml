@@ -22,6 +22,7 @@
     <string name="pie_chart">Pie Chart</string>
     <string name="e_mail_hint">E-mail/Username</string>
     <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
     <string name="log_in_btn">Log-In</string>
     <string name="not_yet_registered_sign_up">Not yet registered? Sign-up</string>
     <string name="sign_up_btn">Sign-Up</string>
@@ -34,4 +35,7 @@
     <string name="trip_drive">Trip Drive</string>
     <string name="trip_average">Trip Average</string>
     <string name="vehicle_average">Vehicle Average</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
+    <string name="logout_button">Log-out</string>
 </resources>

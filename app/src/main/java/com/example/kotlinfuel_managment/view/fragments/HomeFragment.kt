@@ -8,16 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.kotlinfuel_managment.R
 import com.example.kotlinfuel_managment.databinding.FragmentHomeBinding
 import com.example.kotlinfuel_managment.hideKeyboard
-import java.text.DecimalFormat
+import com.example.kotlinfuel_managment.model.Data
+import com.google.firebase.Firebase
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var database: DatabaseReference
 
     private var totalFuel = 0.0
     private var totalDriven = 0.0
@@ -31,10 +35,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding= FragmentHomeBinding.inflate(layoutInflater)
+        database = Firebase.database.reference
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         // adding the color to be shown
         // adding the color to be shown
@@ -49,32 +55,42 @@ class HomeFragment : Fragment() {
         animator.start()
 
         binding.calculateAverageButton.setOnClickListener {
-            val fuelYouPutIn = binding.fuelYouPutInEditText.text.toString()
-            val tripReading = binding.tripCounterReadingEditText.text.toString()
-            val costOfFuel = binding.costOfFuelEditText.text.toString()
-            if (fuelYouPutIn.isNotEmpty() && tripReading.isNotEmpty() && costOfFuel.isNotEmpty()) {
-                fuel = fuelYouPutIn.toDouble()
-                distance = tripReading.toDouble()
-                cost = costOfFuel.toDouble()
-                totalFuel += fuel
-                totalDriven += distance
-                totalCost += cost
-                calculateAndDisplayConsumption()
-                binding.tripCounterReadingEditText.text.clear()
-                binding.fuelYouPutInEditText.text.clear()
-                binding.costOfFuelEditText.text.clear()
-                hideKeyboard(requireActivity())
-            }
+            insertDataToDatabase()
         }
     }
+    private fun insertDataToDatabase() {
+        val fuelYouPutIn = binding.fuelYouPutInEditText.text.toString()
+        val tripReading = binding.tripCounterReadingEditText.text.toString()
+        val costOfFuel = binding.costOfFuelEditText.text.toString()
+        if (fuelYouPutIn.isNotEmpty() && tripReading.isNotEmpty() && costOfFuel.isNotEmpty()) {
+            fuel = fuelYouPutIn.toDouble()
+            distance = tripReading.toDouble()
+            cost = costOfFuel.toDouble()
+            totalFuel += fuel
+            totalDriven += distance
+            totalCost += cost
+            val  tripAverage = calculateTripConsumption(distance, fuel)
+            val  vehiclesAverage = calculateVehicleConsumption(distance, fuel)
+            binding.tripCounterReadingEditText.text.clear()
+            binding.fuelYouPutInEditText.text.clear()
+            binding.costOfFuelEditText.text.clear()
+            binding.tripAverageTextView.text = tripAverage.toString()
+            binding.averageTextView.text = vehiclesAverage.toString()
+            val data = Data(0, fuelYouPutIn, tripReading, costOfFuel, tripAverage, vehiclesAverage)
+            database.child("Data").setValue(data).addOnCompleteListener {
+                Toast.makeText(requireContext(),"saved", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(),"not saved retry", Toast.LENGTH_SHORT).show()
+            }
 
-    private fun calculateAndDisplayConsumption() {
-        if (distance > 0 && fuel > 0 && totalDriven > 0 && totalFuel > 0) {
-            val df = DecimalFormat("#.##")
-            val tripAverage = getString(R.string.trip_average_textView_edited, df.format(distance / fuel))
-            val vehiclesAverage = getString(R.string.average_textView_edited, df.format(totalDriven / totalFuel))
-            binding.tripAverageTextView.text = tripAverage
-            binding.averageTextView.text = vehiclesAverage
+            hideKeyboard(requireActivity())
         }
     }
 }
+
+    private fun calculateVehicleConsumption(totalDriven:Double, totalFuel: Double ): Double {
+        return totalDriven / totalFuel
+    }
+    private fun calculateTripConsumption(distance: Double, fuel: Double): Double {
+        return distance / fuel
+    }

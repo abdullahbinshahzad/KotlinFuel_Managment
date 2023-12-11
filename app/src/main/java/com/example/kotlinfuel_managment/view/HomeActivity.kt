@@ -1,27 +1,30 @@
 package com.example.kotlinfuel_managment.view
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.edit
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.kotlinfuel_managment.R
-import com.example.kotlinfuel_managment.databinding.ActivityMainBinding
+import com.example.kotlinfuel_managment.databinding.ActivityHomeBinding
 import com.example.kotlinfuel_managment.view.fragments.BarChartFragment
 import com.example.kotlinfuel_managment.view.fragments.HistoryFragment
 import com.example.kotlinfuel_managment.view.fragments.HomeFragment
 import com.example.kotlinfuel_managment.view.fragments.PieChartFragment
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loadFragment(HomeFragment())
@@ -46,9 +49,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             true
         }
-//        SHOW YOUR APP NAME ON THE ACTION BAR        ////////////////
-//        setSupportActionBar(binding.toolbar)
 
+        binding.button2.setOnClickListener {
+            val sharedPreference =  getSharedPreferences("Launcher", Context.MODE_PRIVATE)
+            sharedPreference.edit() {
+                this.putBoolean("flag",false)
+                this.apply()
+            }
+            startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+            finish()
+        }
+//        SHOW YOUR APP NAME ON THE ACTION BAR        ////////////////
+//                      setSupportActionBar(binding.toolbar)
 //        NAVIGATION DRAWER        ////////////////
         val actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.nav_open, R.string.nav_close)
 
@@ -100,6 +112,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
+
 }
 
 //class MainActivity : AppCompatActivity() {
