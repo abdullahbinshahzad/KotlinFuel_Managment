@@ -52,7 +52,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.button2.setOnClickListener {
             val sharedPreference =  getSharedPreferences("Launcher", Context.MODE_PRIVATE)
-            sharedPreference.edit() {
+            sharedPreference.edit {
                 this.putBoolean("flag",false)
                 this.apply()
             }

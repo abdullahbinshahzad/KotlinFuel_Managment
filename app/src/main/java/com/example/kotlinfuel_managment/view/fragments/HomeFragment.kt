@@ -10,18 +10,23 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.kotlinfuel_managment.R
 import com.example.kotlinfuel_managment.databinding.FragmentHomeBinding
 import com.example.kotlinfuel_managment.hideKeyboard
 import com.example.kotlinfuel_managment.model.Data
 import com.google.firebase.Firebase
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
+import java.text.DateFormat
+import java.text.DecimalFormat
+import java.util.Calendar
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var database: DatabaseReference
+
 
     private var totalFuel = 0.0
     private var totalDriven = 0.0
@@ -34,7 +39,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         database = Firebase.database.reference
         return binding.root
     }
@@ -69,15 +74,19 @@ class HomeFragment : Fragment() {
             totalFuel += fuel
             totalDriven += distance
             totalCost += cost
-            val  tripAverage = calculateTripConsumption(distance, fuel)
-            val  vehiclesAverage = calculateVehicleConsumption(distance, fuel)
+            val df = DecimalFormat("#.##")
+            val  tripAverage = getString(R.string.trip_average_textView_edited, df.format(calculateTripConsumption(distance, fuel)))
+            val  vehiclesAverage = getString(R.string.average_textView_edited, df.format(calculateVehicleConsumption(totalDriven,totalFuel)))
             binding.tripCounterReadingEditText.text.clear()
             binding.fuelYouPutInEditText.text.clear()
             binding.costOfFuelEditText.text.clear()
-            binding.tripAverageTextView.text = tripAverage.toString()
-            binding.averageTextView.text = vehiclesAverage.toString()
-            val data = Data(0, fuelYouPutIn, tripReading, costOfFuel, tripAverage, vehiclesAverage)
-            database.child("Data").setValue(data).addOnCompleteListener {
+            binding.tripAverageTextView.text = tripAverage
+            binding.averageTextView.text = vehiclesAverage
+
+            val data = Data(fuelYouPutIn, tripReading, costOfFuel, tripAverage, vehiclesAverage)
+            val currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().time)
+            database.child("Data").child(currentDate).setValue(data).addOnCompleteListener {
+
                 Toast.makeText(requireContext(),"saved", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
                 Toast.makeText(requireContext(),"not saved retry", Toast.LENGTH_SHORT).show()

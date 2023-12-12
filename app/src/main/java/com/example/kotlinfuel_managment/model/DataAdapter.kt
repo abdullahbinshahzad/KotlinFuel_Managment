@@ -1,5 +1,6 @@
 package com.example.kotlinfuel_managment.model
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -19,12 +20,12 @@ class DataAdapter: ListAdapter<Data, DataAdapter.DataViewHolder>(Comparator())
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        val item =getItem(position)
+        val item = getItem(position)
         holder.binding.tripFuelTextView.text = item.tripFuel
         holder.binding.tripDriveTextView.text = item.tripDrive
         holder.binding.costOfFuelTextView.text = item.costOfFuel
-        holder.binding.tripAverageTextView.text = item.tripAverage.toString()
-        holder.binding.vehicleAverageTextView.text = item.vehiclesAverage.toString()
+        holder.binding.tripAverageTextView.text = item.tripAverage
+        holder.binding.vehicleAverageTextView.text = item.vehiclesAverage
     }
 
     class Comparator : DiffUtil.ItemCallback<Data>(){
