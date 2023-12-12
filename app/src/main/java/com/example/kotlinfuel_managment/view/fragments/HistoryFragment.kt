@@ -31,9 +31,6 @@ class HistoryFragment : Fragment() {
         viewModel.getData().observe(viewLifecycleOwner, Observer{items ->
             adapter.submitList(items)
         })
-
-
-
 //        database = Firebase.database.reference
 //        dataArrayList = ArrayList()
 //        event = database.addValueEventListener(object : ValueEventListener {
