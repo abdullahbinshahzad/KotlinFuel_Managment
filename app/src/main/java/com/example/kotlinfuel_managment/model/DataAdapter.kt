@@ -1,6 +1,5 @@
 package com.example.kotlinfuel_managment.model
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,7 +10,7 @@ import com.example.kotlinfuel_managment.databinding.CardTemplateBinding
 class DataAdapter: ListAdapter<Data, DataAdapter.DataViewHolder>(Comparator())
 {
     class DataViewHolder(val binding: CardTemplateBinding): RecyclerView.ViewHolder(binding.root) {
-
+        // TODO
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
@@ -21,11 +20,11 @@ class DataAdapter: ListAdapter<Data, DataAdapter.DataViewHolder>(Comparator())
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val item = getItem(position)
-        holder.binding.tripFuelTextView.text = item.tripFuel
-        holder.binding.tripDriveTextView.text = item.tripDrive
-        holder.binding.costOfFuelTextView.text = item.costOfFuel
-        holder.binding.tripAverageTextView.text = item.tripAverage
-        holder.binding.vehicleAverageTextView.text = item.vehiclesAverage
+        holder.binding.tripFuelTextView.text = item.tripFuel.toString()
+        holder.binding.tripDriveTextView.text = item.tripDrive.toString()
+        holder.binding.costOfFuelTextView.text = item.costOfFuel.toString()
+        holder.binding.tripAverageTextView.text = item.tripAverage.toString()
+        holder.binding.vehicleAverageTextView.text = item.vehiclesAverage.toString()
     }
 
     class Comparator : DiffUtil.ItemCallback<Data>(){
