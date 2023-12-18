@@ -4,6 +4,6 @@ import com.example.kotlinfuel_managment.model.Data
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-    suspend fun insertData(data: HashMap<String, Double>)
+    suspend fun insertData(data: HashMap<String, Any>)
     suspend fun getAllData(): Flow<List<Data>>
 }

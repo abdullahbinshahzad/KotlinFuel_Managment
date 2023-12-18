@@ -5,5 +5,6 @@ data class Data(
     val tripDrive: Double = 0.0,
     val costOfFuel: Double = 0.0,
     val tripAverage: Double = 0.0,
-    val vehiclesAverage: Double = 0.0
+    val vehiclesAverage: Double = 0.0,
+    val timestamp: Long = System.currentTimeMillis()
 )

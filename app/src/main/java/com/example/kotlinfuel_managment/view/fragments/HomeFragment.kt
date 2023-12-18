@@ -14,6 +14,7 @@ import com.example.kotlinfuel_managment.R
 import com.example.kotlinfuel_managment.databinding.FragmentHomeBinding
 import com.example.kotlinfuel_managment.hideKeyboard
 import com.example.kotlinfuel_managment.viewmodel.DataViewModel
+import com.google.firebase.firestore.FieldValue
 import java.text.DecimalFormat
 
 class HomeFragment : Fragment() {
@@ -65,7 +66,7 @@ class HomeFragment : Fragment() {
             totalCost += cost
             val  tripAverage = calculateTripConsumption(distance, fuel)
             val  vehiclesAverage = calculateVehicleConsumption(totalDriven,totalFuel)
-            val data = hashMapOf("tripFuel" to fuel, "tripDrive" to distance, "costOfFuel" to cost, "tripAverage" to tripAverage, "vehiclesAverage" to vehiclesAverage)
+            val data = hashMapOf("tripFuel" to fuel, "tripDrive" to distance, "costOfFuel" to cost, "tripAverage" to tripAverage, "vehiclesAverage" to vehiclesAverage, "timestamp" to FieldValue.serverTimestamp())
             dataViewModel.insertData(data)
 //            db.collection("users")
 //                .add(data)

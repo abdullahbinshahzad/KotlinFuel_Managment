@@ -14,7 +14,7 @@ class DataViewModel(private val repository: Repository = RepositoryImpl()):ViewM
     private val _dataList = MutableStateFlow<List<Data>>(emptyList())
     val dataList: StateFlow<List<Data>> get() = _dataList
 
-    fun insertData(data: HashMap<String, Double>) {
+    fun insertData(data: HashMap<String, Any>) {
         viewModelScope.launch {
             repository.insertData(data)
         }
