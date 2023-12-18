@@ -14,6 +14,11 @@
     <string name="pie_chart_fragment">Pie Chart Fragment</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="label_trip_fuel">Trip Fuel: %s</string>
+    <string name="label_trip_drive">Trip Drive: %s</string>
+    <string name="label_cost_of_fuel">Cost of Fuel: %s</string>
+    <string name="label_trip_average">Trip Average: %s</string>
+    <string name="label_vehicle_average">Vehicle Average: %s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="add_fragment">Add Fragment</string>
     <string name="home">Home</string>

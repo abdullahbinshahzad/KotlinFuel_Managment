@@ -1,6 +1,6 @@
 package com.example.kotlinfuel_managment.model
 
-import java.security.Timestamp
+import com.google.firebase.Timestamp
 
 data class Data(
     val tripFuel: Double = 0.0,
