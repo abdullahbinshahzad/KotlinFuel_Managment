@@ -54,10 +54,11 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-view-model-ktx:2.6.2")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("com.google.android.material:material:1.12.0-alpha02")
     implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 }
