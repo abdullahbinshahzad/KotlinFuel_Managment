@@ -1,6 +1,7 @@
 package com.example.kotlinfuel_managment.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,7 @@ class BarChartFragment : Fragment() {
     private fun updateBarChart(dataList: List<Data>) {
         val entries = ArrayList<BarEntry>()
         val title = "Title"
-
+        Log.i("indexAndValues","$entries")
         for ((index, data) in dataList.withIndex()) {
             val value = data.timestamp.toString()
             val barEntry = BarEntry(index.toFloat(), value.toFloat())
