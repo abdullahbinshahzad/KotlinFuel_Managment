@@ -27,7 +27,7 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button"
+            android:text="@string/re_launch"
             android:layout_gravity="end"
             />
     </androidx.appcompat.widget.Toolbar>

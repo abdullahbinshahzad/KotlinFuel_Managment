@@ -1,5 +1,6 @@
 package com.example.kotlinfuel_managment.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kotlinfuel_managment.Repository
@@ -23,6 +24,7 @@ class DataViewModel(private val repository: Repository = RepositoryImpl()):ViewM
         viewModelScope.launch {
             repository.getAllData().collect { data ->
                 _dataList.value = data
+                Log.d("DataViewModel", "DataList size: ${data.size}")
             }
         }
     }

@@ -9,4 +9,5 @@ data class Data(
     val tripAverage: Double = 0.0,
     val vehiclesAverage: Double = 0.0,
     val timestamp: Timestamp? = null
+
 )

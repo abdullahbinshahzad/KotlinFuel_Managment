@@ -40,8 +40,11 @@
     <string name="trip_drive">Trip Drive</string>
     <string name="trip_average">Trip Average</string>
     <string name="vehicle_average">Vehicle Average</string>
-    <string name="button">Button</string>
-    <string name="textview">TextView</string>
     <string name="logout_button">Log-out</string>
     <string name="history_frag">HISTORY</string>
+    <string name="fill_your_tank_to_the_top">Fill your tank to the top</string>
+    <string name="zero_the_trip_counter">Zero the trip counter</string>
+    <string name="when_you_next_fill_up_click_the_button_below">When you next fill up, click the button below</string>
+    <string name="followed_the_instructions">Followed the instructions</string>
+    <string name="re_launch">Re-Launch</string>
 </resources>

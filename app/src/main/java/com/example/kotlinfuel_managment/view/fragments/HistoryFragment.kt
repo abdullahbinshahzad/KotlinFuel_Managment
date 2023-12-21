@@ -1,7 +1,6 @@
 package com.example.kotlinfuel_managment.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinfuel_managment.databinding.FragmentHistoryBinding
 import com.example.kotlinfuel_managment.model.DataAdapter
 import com.example.kotlinfuel_managment.viewmodel.DataViewModel
+import kotlinx.coroutines.launch
 
 class HistoryFragment : Fragment() {
     private lateinit var dataAdapter: DataAdapter
@@ -41,10 +41,10 @@ class HistoryFragment : Fragment() {
 
     private fun retrieveDataAndUpdateRecyclerView() {
 
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             dataViewModel.dataList.collect { data ->
                 dataAdapter.submitList(data)
-                Log.d("Did&data", "$data")
+
             }
         }
     }

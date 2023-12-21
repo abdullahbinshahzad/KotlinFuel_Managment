@@ -2,6 +2,8 @@ package com.example.kotlinfuel_managment.view.fragments
 
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,14 +23,19 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var dataViewModel: DataViewModel
+    private lateinit var sharedPreferences: SharedPreferences
 
-    private var totalFuel = 0.0
-    private var totalDriven = 0.0
-    private var totalCost = 0.0
+    private val TOTAL_FUEL_KEY = "totalFuel"
+    private val TOTAL_DRIVEN_KEY = "totalDriven"
+    private val TOTAL_COST_KEY = "totalCost"
 
     private var fuel  = 0.0
     private var distance = 0.0
     private var cost  = 0.0
+
+    private var totalFuel = 0.0
+    private var totalDriven = 0.0
+    private var totalCost = 0.0
 
     private val df = DecimalFormat("#.##")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +43,13 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         dataViewModel = ViewModelProvider(this)[DataViewModel::class.java]
+        sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+
+        // Retrieve previous values
+        totalFuel = sharedPreferences.getFloat(TOTAL_FUEL_KEY, 0.0f).toDouble()
+        totalDriven = sharedPreferences.getFloat(TOTAL_DRIVEN_KEY, 0.0f).toDouble()
+        totalCost = sharedPreferences.getFloat(TOTAL_COST_KEY, 0.0f).toDouble()
+
         return binding.root
     }
 
@@ -64,18 +78,22 @@ class HomeFragment : Fragment() {
             totalFuel += fuel
             totalDriven += distance
             totalCost += cost
+            with(sharedPreferences.edit()) {
+                putFloat(TOTAL_FUEL_KEY, totalFuel.toFloat())
+                putFloat(TOTAL_DRIVEN_KEY, totalDriven.toFloat())
+                putFloat(TOTAL_COST_KEY, totalCost.toFloat())
+                apply()
+            }
             val  tripAverage = calculateTripConsumption(distance, fuel)
             val  vehiclesAverage = calculateVehicleConsumption(totalDriven,totalFuel)
-            val data = hashMapOf("tripFuel" to fuel, "tripDrive" to distance, "costOfFuel" to cost, "tripAverage" to tripAverage, "vehiclesAverage" to vehiclesAverage, "timestamp" to FieldValue.serverTimestamp())
+            val data = hashMapOf(
+                "tripFuel" to fuel,
+                "tripDrive" to distance,
+                "costOfFuel" to cost,
+                "tripAverage" to tripAverage,
+                "vehiclesAverage" to vehiclesAverage,
+                "timestamp" to FieldValue.serverTimestamp())
             dataViewModel.insertData(data)
-//            db.collection("users")
-//                .add(data)
-//                .addOnSuccessListener { documentReference ->
-//                    Log.d("DAWID", "DocumentSnapshot added with ID: ${documentReference.id}")
-//                }
-//                .addOnFailureListener { e ->
-//                    Log.w("EAD", "Error adding document", e)
-//                }
             binding.tripCounterReadingEditText.text.clear()
             binding.fuelYouPutInEditText.text.clear()
             binding.costOfFuelEditText.text.clear()

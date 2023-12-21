@@ -34,8 +34,9 @@ class RepositoryImpl : Repository {
                 dataList.add(data)
             }
             emit(dataList)
+            Log.d("RepositoryImpl", "DataList size: ${dataList.size}")
         } catch (e: Exception) {
-            // Handle exceptions if needed
+            Log.e("RepositoryImpl", "Error getting data", e)
         }
     }
 }
