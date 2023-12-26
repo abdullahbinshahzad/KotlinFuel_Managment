@@ -35,7 +35,6 @@ class HistoryFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         retrieveDataAndUpdateRecyclerView()
-
         dataViewModel.getAllData()
     }
 
@@ -44,7 +43,6 @@ class HistoryFragment : Fragment() {
         lifecycleScope.launch {
             dataViewModel.dataList.collect { data ->
                 dataAdapter.submitList(data)
-
             }
         }
     }

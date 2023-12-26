@@ -67,7 +67,7 @@ class BarChartFragment : Fragment() {
         val costOfFuelEntries = ArrayList<BarEntry>()
         val tripDriveEntries = ArrayList<BarEntry>()
 
-// Populate entries for each category based on timestamps
+        // Populate entries for each category based on timestamps
         for ((index, data) in dataList.withIndex()) {
             val groupIndex = index * 5 // Each timestamp has 5 categories
 
@@ -78,7 +78,7 @@ class BarChartFragment : Fragment() {
             tripDriveEntries.add(BarEntry(groupIndex + 4f, data.tripDrive.toFloat()))
         }
 
-// Create BarDataSet instances for each category
+        // Create BarDataSet instances for each category
         val tripFuelDataSet = BarDataSet(tripFuelEntries, "Trip Fuel")
         val tripAverageDataSet = BarDataSet(tripAverageEntries, "Trip Average")
         val vehicleAverageDataSet = BarDataSet(vehicleAverageEntries, "Vehicle Average")
